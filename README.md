@@ -14,15 +14,32 @@ The chat window is the demo. The scheduler is the project.
 > real numbers (see below). Don't put fabricated absolute numbers on a resume;
 > put the curve and explain *why* it has that shape.
 
+## Live demo
+
+Streaming generation — tokens arrive one at a time over Server-Sent Events,
+exactly like ChatGPT. Tier selector routes premium requests ahead of free ones.
+
+![streaming chat](docs/streaming.png)
+
+The ops console. The amber slots are the **running batch**: each lit slot is a
+sequence the engine is decoding this step. In continuous batching, finished
+slots are refilled from the queue immediately, so the engine never idles.
+
+![running batch console](docs/console-batch.png)
+
+Live telemetry — throughput history, queue depth, and the backpressure
+threshold (429 on overflow).
+
+![telemetry console](docs/console-telemetry.png)
+
 ---
 
 ## What's actually here
-
-```
 client ──HTTP──▶ FastAPI ──▶ bounded priority queue ──▶ scheduler ──▶ engine ──▶ GPU
-                    │                                       │            │
-                    └──◀── SSE token stream ◀───────────────┴────────────┘
-```
+
+│                                       │            │
+
+└──◀── SSE token stream ◀───────────────┴────────────┘
 
 | Component | File | What it demonstrates |
 |---|---|---|
@@ -146,3 +163,27 @@ built-in Console covers the demo.
 2. Paged KV cache (the vLLM trick) to pack more concurrent sequences.
 3. Multi-GPU: shard the running batch across devices.
 4. Prefill/decode disaggregation.
+
+## License
+
+MIT License — see [LICENSE](LICENSE).
+
+Copyright (c) 2026 Sandeep
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
