@@ -149,7 +149,7 @@ built-in Console covers the demo.
 | `HF_MODEL` | `sshleifer/tiny-gpt2` | model id for `ENGINE=hf` |
 | `DEVICE` | `cpu` | `cpu` or `cuda` |
 
-## Honest limitations 
+## Limitations 
 
 - Mock-engine numbers are **simulated**; they show the scaling law, not GPU reality.
 - `HFEngine` is **static**-batched, not continuous — that's the named next step.
