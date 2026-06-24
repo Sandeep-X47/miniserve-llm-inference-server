@@ -166,7 +166,7 @@ built-in Console covers the demo.
 
 ## License
 
-MIT License — see [LICENSE](LICENSE).
+MIT License 
 
 Copyright (c) 2026 Sandeep
 
