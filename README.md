@@ -150,14 +150,14 @@ built-in Console covers the demo.
 | `HF_MODEL` | `sshleifer/tiny-gpt2` | model id for `ENGINE=hf` |
 | `DEVICE` | `cpu` | `cpu` or `cuda` |
 
-## Honest limitations (say these in the interview before they ask)
+## Honest limitations 
 
 - Mock-engine numbers are **simulated**; they show the scaling law, not GPU reality.
 - `HFEngine` is **static**-batched, not continuous — that's the named next step.
 - No paged-attention / no real KV-cache eviction; single process, single GPU.
 - This optimizes for *clarity of the serving concepts*, not raw performance.
 
-## Roadmap (the "Google-level" extensions, honestly scoped)
+## Roadmap 
 
 1. Continuous batching for `HFEngine` (per-row cache surgery, left-padding).
 2. Paged KV cache (the vLLM trick) to pack more concurrent sequences.
