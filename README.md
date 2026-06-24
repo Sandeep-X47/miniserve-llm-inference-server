@@ -11,8 +11,7 @@ The chat window is the demo. The scheduler is the project.
 > The graph above is **simulated** (mock engine, no GPU). Per-step latency is
 > held constant across batch sizes — the same property a real GPU has — so
 > throughput scales with the batch. Point the benchmark at a real model to get
-> real numbers (see below). Don't put fabricated absolute numbers on a resume;
-> put the curve and explain *why* it has that shape.
+> real numbers (see below). 
 
 ## Live demo
 
