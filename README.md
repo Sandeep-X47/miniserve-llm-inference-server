@@ -163,6 +163,8 @@ built-in Console covers the demo.
 3. Multi-GPU: shard the running batch across devices.
 4. Prefill/decode disaggregation.
 
+--- 
+
 # 📄 License
 
 Licensed under the MIT License.
